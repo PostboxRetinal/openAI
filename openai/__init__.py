@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 load_dotenv(dotenv_path='../.env')
 
-client = OpenAI(api_key=os.getenv('APIKEY_TESTING'))
+client = OpenAI(api_key=os.getenv('APIKEY_PRODUCTION'))
 data = input('Digita tu entrada:\n')
 completion = client.chat.completions.create(
     model="gpt-4o-mini",
