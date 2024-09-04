@@ -1,4 +1,7 @@
-import sys
+import sys, os
+# Add the parent directory to the Python path
+sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../')
+
 import tests.text_generation as TG
 import tests.vision as VI
 
