@@ -1,10 +1,20 @@
 from openai import OpenAI
-client = OpenAI()
+import os
+from dotenv import load_dotenv
 
-response = client.chat.completions.create(
-  model="gpt-4o-mini",
-  messages=[
-    {"role": "system", "content": "You are a helpful assistant."},
-    {"role": "user", "content": "Qué es un LLM?"}
-  ]
-)
+load_dotenv(dotenv_path='../.env')
+
+def text_generation():  
+    client = OpenAI(api_key=os.getenv('APIKEY_PRODUCTION'))
+    data = input('Digita tu entrada:\n')
+    completion = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[
+            {"role": "system", "content": "You are a helpdesk tech assistant."},
+            {
+                "role": "user",
+                "content": data
+            }
+        ]
+    )
+    return completion.choices[0].message.content
