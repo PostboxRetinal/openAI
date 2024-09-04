@@ -5,7 +5,15 @@ import os
 def vision():
 
   client = OpenAI(api_key=os.getenv('APIKEY_PRODUCTION'))
-  data = input('Digita tu entrada:\n')
+  prompt = input('Pregunta al modelo:\n')
+  link = input('Ingresa el link de la imagen:\n')
+  detail  = input('Ingresa la fidelidad de la imagen\n\n- 1. low res\n- 2. high res\n- 3. auto\n\n')
+  if detail == '1':
+    detail = 'low'
+  elif detail == '2':
+    detail = 'high'
+  else:
+    detail = 'auto'
 
   response = client.chat.completions.create(
     model="gpt-4o-mini",
@@ -13,12 +21,12 @@ def vision():
       {
         "role": "user",
         "content": [
-          {"type": "text", "text": "What’s in this image?"},
+          {"type": "text", "text": prompt},
           {
             "type": "image_url",
             "image_url": {
-              "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg",
-              "detail": "low"
+              "url": link,
+              "detail": detail
             },
           },
         ],
