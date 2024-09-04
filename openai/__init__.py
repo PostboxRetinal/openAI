@@ -9,7 +9,7 @@ data = input('Digita tu entrada:\n')
 completion = client.chat.completions.create(
     model="gpt-4o-mini",
     messages=[
-        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "system", "content": "You are a helpdesk tech assistant."},
         {
             "role": "user",
             "content": data
