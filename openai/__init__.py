@@ -1,12 +1,27 @@
-import sys, os
+import sys, os, subprocess
 # Add the parent directory to the Python path
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../')
 
 import tests.text_generation as TG
 import tests.vision as VI
 
+def plataforma():
+    '''
+    Función para determinar la plataforma en la que se está ejecutando el script'''
+    if os.name == 'nt':
+        return 'windows'
+    else:
+        return 'linux'
+    
+def esperar():
+    '''
+    Función para esperar a que el usuario presione una tecla para continuar'''
+    print()
+    input("Presiona enter para continuar...")
 
 def menu():
+    '''
+    Función para mostrar el menú principal'''
     options = ["1","2","3","4","5","6","0"]
     while True:
         print( 
@@ -27,8 +42,11 @@ def menu():
         elif option in options:
             if option == "1":
                 print(TG.text_generation())
+                esperar()
+
             elif option == "2":
                 print(VI.vision())
+                esperar()
             elif option == "3":
                 print("TO DO")
             elif option == "4":
@@ -42,6 +60,9 @@ def menu():
         
 
 #Exec Menu
+
+print(f"Binvenido al demo de openAI\nCorriendo desde {plataforma()}\n\n")
+
 try:
     menu()
 except KeyboardInterrupt:
