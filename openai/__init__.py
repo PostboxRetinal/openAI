@@ -1,4 +1,4 @@
-import sys, os, subprocess
+import sys, os
 # Add the parent directory to the Python path
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/../')
 
@@ -53,7 +53,7 @@ print(f"Binvenido al demo de openAI\nCorriendo desde {plataforma()}\n\n")
 
 try:
     menu()
-    
+
 except KeyboardInterrupt:
     salida = input('\n*¿Desea salir del programa? S/N: * ').lower()
     if salida == 'n':
