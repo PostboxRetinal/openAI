@@ -10,11 +10,13 @@ def text_generation():
     completion = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=[
-            {"role": "system", "content": "You are a helpdesk tech assistant."},
+            {"role": "system", "content": "Eres un asistente de helpdesk general."},
             {
                 "role": "user",
                 "content": data
             }
-        ]
+        ],
+        max_tokens=100,
+        temperature=0.5
     )
     return completion.choices[0].message.content

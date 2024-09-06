@@ -32,7 +32,8 @@ def vision():
         ],
       }
     ],
-    max_tokens=300,
+    max_tokens=100,
+    temperature=0.5
   )
 
   return response.choices[0].message.content
